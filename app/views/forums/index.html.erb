@@ -1,0 +1,5 @@
+<ol>
+  <% @forums.each do |forum| %>
+    <li><%= link_to forum.name, forum_path(forum) %></li>
+  <% end %>
+</ol>

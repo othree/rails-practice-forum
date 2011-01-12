@@ -1,0 +1,9 @@
+<%= form_for @post, :url => forum_posts_path do |f| %>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title %>
+    
+    <%= f.label :content, "Content" %>
+    <%= f.text_area :content %>
+    
+    <%= f.submit "Create" %>
+<% end %>
