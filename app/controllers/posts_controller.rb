@@ -26,4 +26,10 @@ class PostsController < ApplicationController
     
     redirect_to forum_post_path(@post.forum_id, @post)
   end
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    @post.destroy
+    
+    redirect_to forum_path(params[:forum_id])
+  end
 end
