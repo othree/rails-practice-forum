@@ -1,0 +1,7 @@
+<h1>Forum Index</h1>
+
+<ol>
+  <% @forums.each do |forum| %>
+    <li><%= link_to forum.name, admin_forum_path(forum) %>, <%= forum.posts.size %></li>
+  <% end %>
+</ol>

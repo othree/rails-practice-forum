@@ -4,8 +4,8 @@ development:
   adapter: mysql2
   database: forum_development
   encoding: utf8
-  username: practice
-  password: practice
+  username: root
+  password: 
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,12 +14,12 @@ test:
   adapter: mysql2
   database: forum_test
   encoding: utf8
-  username: practice
-  password: practice
+  username: root
+  password: 
 
 production:
   adapter: mysql2
   database: forum_production
   encoding: utf8
-  username: practice
-  password: practice
+  username: root
+  password: 

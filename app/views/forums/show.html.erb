@@ -1,5 +1,4 @@
 <h1><%= @forum.name %></h1>
-<%= link_to 'New Post', new_forum_post_path(@forum) %>
 <ol>
   <% @posts.each do |post| %>
     <li><%= link_to post.title, forum_post_path(@forum, post) %></li>
@@ -7,3 +6,4 @@
 </ol>
 
 <%= will_paginate @posts %>
+<p><%= link_to "Index", root_path %></p>
