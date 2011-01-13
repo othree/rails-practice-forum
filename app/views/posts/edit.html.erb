@@ -1,0 +1,4 @@
+<%= form_for @post, :url => forum_post_path(@post.forum_id, @post), :html => { :method => :put } do |f| %>
+  <%= render :partial => 'form', :locals => { :f => f } %>
+  <%= f.submit "Update" %>
+<% end %>

@@ -1,3 +1,4 @@
 <p><%= @post.title %></p>
 <p><%= @post.content %></p>
+<p><%= link_to 'edit post', edit_forum_post_path(@forum, @post) %></p>
 <p><%= link_to 'back to forum', forum_path(@forum) %></p>
