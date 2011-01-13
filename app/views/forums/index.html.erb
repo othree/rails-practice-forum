@@ -1,8 +1,7 @@
-<%= @user.login %>
 <h1>Forum Index</h1>
 
 <ol>
   <% @forums.each do |forum| %>
-    <li><%= link_to forum.name, forum_path(forum) %></li>
+    <li><%= link_to forum.name, forum_path(forum) %>, <%= forum.posts.size %></li>
   <% end %>
 </ol>
