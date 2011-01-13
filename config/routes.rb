@@ -73,4 +73,9 @@ Practiceforum::Application.routes.draw do
   resources :forums do
     resources :posts
   end
+  namespace "admin" do
+    resources :forums do
+      resources :posts
+    end
+  end
 end

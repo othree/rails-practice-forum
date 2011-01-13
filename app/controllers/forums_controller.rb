@@ -2,7 +2,6 @@ class ForumsController < ApplicationController
   include AuthenticatedSystem
 
   def index
-    @user = current_user
     @forums = Forum.all
   end
   def show

@@ -1,5 +1,10 @@
 <h1><%= @post.title %></h1>
 <p><%= @post.content %></p>
+<% if @post.file %>
+<p>
+  <%= link_to @post.file.url %>
+</p>
+<% end %>
 <p>
   <%= link_to 'edit post', edit_forum_post_path(@post.forum_id, @post) %>,
   <%= link_to 'delete post', forum_post_path(@post.forum_id, @post), :method => :delete %>
