@@ -77,5 +77,6 @@ Practiceforum::Application.routes.draw do
     resources :forums do
       resources :posts
     end
+    root :controller => "forums", :action => "index"
   end
 end
