@@ -8,6 +8,16 @@ gem 'rails', '3.0.3'
 gem 'mysql2'
 gem 'will_paginate', '3.0.pre2'
 gem 'paperclip'
+gem 'populator'
+
+group :development, :test do
+  gem "rspec-rails", "~> 2.0.0" 
+  gem "autotest" 
+  gem "rails3-generators" 
+  gem "factory_girl_rails" 
+  gem "faker" 
+  gem "rcov" 
+end
 
 # Use unicorn as the web server
 # gem 'unicorn'
