@@ -19,6 +19,8 @@ group :development, :test do
   gem "rcov" 
 end
 
+gem 'annotate', :group => :development
+
 # Use unicorn as the web server
 # gem 'unicorn'
 
