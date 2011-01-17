@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   include AuthenticatedSystem
-  before_filter :login_required, :except => [:show]
+  before_filter :login_required, :except => [:show, :index]
+  before_filter :find_forum, :only => [:index]
+
+  def index
+    @posts = @forum.posts.paginate(:page => params[:page], :per_page => 20, :order => 'id DESC')
+  end
 
   def show
     @forum = Forum.find(params[:forum_id])
@@ -31,5 +36,10 @@ class PostsController < ApplicationController
     @post.destroy
     
     redirect_to forum_path(params[:forum_id])
+  end
+
+  protected
+  def find_forum
+    @forum = Forum.find(params[:forum_id])
   end
 end
