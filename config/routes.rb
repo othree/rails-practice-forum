@@ -71,7 +71,9 @@ Practiceforum::Application.routes.draw do
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id(.:format)))'
   resources :forums do
-    resources :posts
+    resources :posts do
+      post :plus, :on => :member
+    end
   end
   namespace "admin" do
     resources :forums do

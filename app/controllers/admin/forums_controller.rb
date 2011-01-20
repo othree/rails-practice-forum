@@ -7,6 +7,17 @@ class Admin::ForumsController < Admin::BaseController
   end
   def show
     @forum = Forum.find(params[:id])
-    @posts = @forum.posts.paginate(:page => params[:page], :per_page => 3)
+    redirect_to admin_forum_posts_path(@forum)
+  end
+  def new
+    @forum = Forum.new
+  end
+  def create
+    @forum = Forum.new(params[:forum])
+    if @forum.save
+      redirect_to admin_forum_posts_path(@forum)
+    else
+      render :new
+    end
   end
 end

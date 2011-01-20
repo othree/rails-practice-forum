@@ -5,3 +5,5 @@
     <li><%= link_to forum.name, admin_forum_path(forum) %>, <%= forum.posts.size %></li>
   <% end %>
 </ol>
+
+<%= link_to "new forum", new_admin_forum_path %>

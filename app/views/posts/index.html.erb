@@ -1,9 +1,18 @@
+<% content_for :javascript_includes do %>
+  <%= javascript_include_tag "forum.js" %>
+<% end %>
+
 <h1><%= @forum.name %></h1>
 <ol>
   <% @posts.each do |post| %>
-    <li><%= link_to post.title, forum_post_path(@forum, post) %></li>
+    <li>
+      <%= link_to post.title, forum_post_path(@forum, post) %>
+      [<span id="<%= "forum#{@forum.id}-post#{post.id}-score" %>"><%= post.score %></span>]
+      [<%= link_to "+1", plus_forum_post_path(@forum, post), :remote => true, :method => :post %>]
+    </li>
   <% end %>
 </ol>
 
 <%= will_paginate @posts %>
+<p><%= link_to "New Post", new_forum_post_path %></p>
 <p><%= link_to "Index", root_path %></p>

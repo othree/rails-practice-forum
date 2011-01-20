@@ -12,7 +12,7 @@ describe ForumsController do
       @forum = mock_model(Forum)
       controller.params = {:id => 2}
 
-      Forum.should_receive(:find).with(2).and_return(@forum)
+      Forum.should_receive(:find).once.with(2).and_return(@forum)
       controller.send(:find_forum)
 
       assigns(:forum).should eq(@forum)
@@ -24,7 +24,7 @@ describe ForumsController do
       @forums = [ mock_model(Forum) ]
       Forum.stub(:all) { @forums }
 
-      get :index
+      get :index, :id => 2
 
       assigns(:forums).should eq( @forums )
       response.should render_template("index")
@@ -39,46 +39,10 @@ describe ForumsController do
       response.should redirect_to(forum_posts_path(@forum))
     end
   end
-  describe "GET new" do
-    it "returns a new forum form" do
-      @forum = mock_model(Forum)
-      Forum.should_receive(:new).and_return(@forum)
 
-      get :new
+  #pending "GET edit"
 
-      assigns(:forum).should eq(@forum)
-      response.should render_template("new")
-    end
-  end
+  #pending "PUT update"
 
-  describe "POST create" do
-    it "creates successfully" do
-      @forum = mock_model(Forum)
-      @params = { "title" => Faker::Lorem.sentence }
-      Forum.should_receive(:new).with(@params).and_return(@forum)
-      @forum.should_receive(:save).and_return(true)
-
-      post :create, {:forum => @params}
-
-      response.should redirect_to(forum_posts_path(@forum))
-    end
-
-    it "fails to create" do
-      @forum = mock_model(Forum)
-      @params = { "title" => Faker::Lorem.sentence }
-      Forum.should_receive(:new).with(@params).and_return(@forum)
-      @forum.should_receive(:save).and_return(false)
-
-      post :create, {:forum => @params}
-
-      assigns(:forum).should eq(@forum)
-      response.should render_template("new")
-    end
-  end
-
-  pending "GET edit"
-
-  pending "PUT update"
-
-  pending "DELETE destroy"
+  #pending "DELETE destroy"
 end

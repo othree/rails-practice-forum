@@ -1,6 +1,6 @@
 <h2>New Forum:</h2>
 
-<%= form_for @forum, :url => forums_path do |f| %>
+<%= form_for @forum, :url => admin_forums_path do |f| %>
   <%= f.label :name, "Title" %> <br/>
   <%= f.text_field :name %> <br/>
 

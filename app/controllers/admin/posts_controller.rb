@@ -3,6 +3,10 @@ class Admin::PostsController < Admin::BaseController
   before_filter :require_is_admin
   before_filter :find_post, :only => [ :show, :edit, :update, :destroy ]
 
+  def index
+    @forum = Forum.find(params[:forum_id])
+    @posts = @forum.posts.paginate(:page => params[:page], :per_page => 20, :order => 'id DESC')
+  end
   def show
   end
   def edit

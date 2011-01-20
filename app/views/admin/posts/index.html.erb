@@ -1,0 +1,9 @@
+<h1><%= @forum.name %></h1>
+<ol>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.title, admin_forum_post_path(@forum, post) %></li>
+  <% end %>
+</ol>
+
+<%= will_paginate @posts %>
+<p><%= link_to "Admin Index", admin_root_path %></p>
