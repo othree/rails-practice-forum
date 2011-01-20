@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   include AuthenticatedSystem
-  before_filter :login_required, :except => [:show, :index]
+  before_filter :login_required, :except => [:show, :index, :plus]
   before_filter :find_forum
   before_filter :find_post, :except => [:index, :new, :create]
 

@@ -3,12 +3,12 @@ require 'spec_helper'
 describe PostsController do
 
   def should_find_forum
-    @forum = mock_model(Forum)
+    @forum = mock_model(Forum, :id => 4)
     controller.should_receive(:find_forum) { controller.instance_variable_set("@forum", @forum) }.ordered
   end 
 
   def should_find_post
-    @post  = mock_model(Post)
+    @post  = mock_model(Post, :id => 3, :forum_id => 4, :score => 15)
     controller.should_receive(:find_post ) { controller.instance_variable_set("@post",  @post)  }.ordered
   end 
 
@@ -176,6 +176,22 @@ describe PostsController do
       delete :destroy, {:forum_id => @forum.id, :id => 3}
 
       response.should redirect_to(forum_posts_path(@forum))
+    end
+  end
+
+  describe "POST plus" do
+    it  "plus score" do
+      should_find_forum
+      should_find_post
+      @post.should_receive(:score=).with(16)
+      @post.should_receive(:save).and_return(true)
+
+      post :plus, :forum_id => 4, :id => 3
+
+      assigns(:forum).should eq( @forum )
+      assigns(:post).should eq( @post )
+
+      response.body.should == {:forum_id => @forum.id, :post_id => @post.id, :score => @post.score}.to_json
     end
   end
 
