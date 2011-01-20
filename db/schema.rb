@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20110120065848) do
     t.string   "file_content_type"
     t.integer  "file_file_size"
     t.datetime "file_updated_at"
-    t.integer  "score",             :default => 0
+    t.integer  "score",             :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|
