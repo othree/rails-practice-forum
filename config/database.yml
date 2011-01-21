@@ -22,4 +22,4 @@ production:
   database: forum_production
   encoding: utf8
   username: root
-  password: 
+  password: mmppwd

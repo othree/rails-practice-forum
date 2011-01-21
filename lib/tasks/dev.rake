@@ -9,6 +9,9 @@ namespace :dev do
       u.is_admin = true
       u.save!
       
+      u = User.new( :login => "othree", :password => "password", :password_confirmation => "password", :email => "othree@example.com", :name => "othree")
+      u.save!
+
       Forum.populate(3) do |forum|
         forum.name = 'Forum' + forum.id.to_s
 
