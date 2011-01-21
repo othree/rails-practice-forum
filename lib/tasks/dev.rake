@@ -20,6 +20,8 @@ namespace :dev do
           post.content = 'Article Content'
           post.forum_id = forum.id
         end
+
+        forum.posts_count = 50
       end
 
   end

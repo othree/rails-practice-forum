@@ -1,6 +1,6 @@
 class AddPostCount < ActiveRecord::Migration
   def self.up
-    add_column :forums, :posts_count, :integer, :default => 0
+    add_column :forums, :posts_count, :integer, :default => 0, :null => false
     Forum.reset_column_information
     Forum.find(:all).each do |f|
       Forum.update_counters f.id, :posts_count => f.posts.length

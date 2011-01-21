@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(:version => 20110120065848) do
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "posts_count", :default => 0
+    t.integer  "posts_count", :default => 0, :null => false
   end
 
   create_table "posts", :force => true do |t|
